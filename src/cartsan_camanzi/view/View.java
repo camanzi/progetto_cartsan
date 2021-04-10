@@ -1,6 +1,8 @@
 package cartsan_camanzi.view;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
 public class View {
 
@@ -8,20 +10,20 @@ public class View {
 		ResultSetMetaData rsmd = res.getMetaData();
 		int columnsNumber = rsmd.getColumnCount();
 		while(res.next()) {
-		    for (int i = 1; i <= columnsNumber; i++) {
-		        if (i > 1) System.out.print(",  ");
-		        String columnValue = res.getString(i);
-		        System.out.print(columnValue + " " + rsmd.getColumnName(i));
-		    }
-		    System.out.println("");
+			for (int i = 1; i <= columnsNumber; i++) {
+				if (i > 1) System.out.print(",  ");
+				String columnValue = res.getString(i);
+				System.out.print(columnValue + " " + rsmd.getColumnName(i));
+			}
+			System.out.println("");
 		}
-		
+
 	}
-	
+
 	public void errore() {
 		System.out.print("Input sbagliato riprovare");
 	}
-	
+
 	public void showOption() {
 		System.out.println("\nScegliere cosa vedere:\n"
 				+ " 1:Numero_ticket_cliente\n"
@@ -31,7 +33,7 @@ public class View {
 				+ " 5:Minuti_per_cliente\n"
 				+ " 9:Exit");
 	}
-	
+
 	public void inserisciId() {
 		System.out.print("Inserire id:");
 	}
