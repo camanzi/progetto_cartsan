@@ -1,10 +1,11 @@
 package cartsan_camanzi.model;
+import java.sql.Connection;
 import java.util.List;
 
 public interface ClienteDAO {
 	
-	public List<Cliente> clientiPerTicket(int idTicket);
-	public void updateCliente(Cliente t, int idTicket);
-	public void createCliente(Cliente t);
-	public void deleteCliente(int idTicket);
+	public List<Cliente> QuantitaTicketPerCliente(Connection dbConn);
+	public List<Cliente> topDieciClientiPerTicket(Connection dbConn);
+	public List<Cliente> QuantitaMinutiPerCliente(Connection dbConn);
+	public List<Cliente> TopDieciMinutiPerCliente(Connection dbConn);
 }

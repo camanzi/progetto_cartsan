@@ -1,32 +1,36 @@
 package cartsan_camanzi.control;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
-import cartsan_camanzi.model.DbManager;
+import cartsan_camanzi.model.Cliente;
+import cartsan_camanzi.model.DBManager;
+import cartsan_camanzi.model.Ticket;
 import cartsan_camanzi.view.View;
 
 public class Main {
 
 	public static void main(String[] args) {
-		DbManager db = new DbManager("localhost", "kamanz", "123456");
+
+		DBManager db = new DBManager("localhost", "kamanz", "123456");
 		View v = new View();
 		Scanner s = new Scanner(System.in);
-		ResultSet res = null;
+		LinkedList<Cliente> listCliente;
+		LinkedList<Ticket> listTicket;
 		int input;
 
 		/*
 		 * Query possibili:
 		 * 
-		 * TicketXCliente 
+		 * QuantitaTicketXCliente -> ritorno lista clienti x
 		 * 
-		 * Top10ClientiXTicket
+		 * Top10ClientiXTicket -> ritorno lista clienti x
 		 * 
-		 * MinutiXCliente
+		 * MinutiXCliente -> ritorno lista clienti x
 		 * 
-		 * Top10minutiPerCliente
+		 * Top10minutiPerCliente -> ritorno lista clienti
 		 * 
-		 * MinutiXMeseXCliente
+		 * MinutiXMeseXCliente -> ritorno lista ticket
 		 * 
 		 * */
 
@@ -36,26 +40,36 @@ public class Main {
 				input = s.nextInt();
 				switch (input){
 				case 1:
-					res  = db.ticketPerCliente();
-					v.showResult(res);
+					listCliente = db.ticketPerCliente();
+					while(!listCliente.isEmpty()) {
+						v.showCliente(listCliente.remove());	
+					}
 					break;
 				case 2:
-					res  = db.minutiPerCliente();
-					v.showResult(res);
+					listCliente = db.minutiPerCliente();
+					while(!listCliente.isEmpty()) {
+						v.showCliente(listCliente.remove());	
+					}
 					break;
 				case 3:
-					res  = db.topDieciClientiPerMinuti();
-					v.showResult(res);
+					listCliente = db.topDieciClientiPerMinuti();
+					while(!listCliente.isEmpty()) {
+						v.showCliente(listCliente.remove());	
+					}
 					break;
 				case 4:
-					res  = db.topDieciClientiPerTicket();
-					v.showResult(res);
+					listCliente = db.topDieciClientiPerTicket();
+					while(!listCliente.isEmpty()) {
+						v.showCliente(listCliente.remove());	
+					}
 					break;
 				case 5:
 					v.inserisciId();
 					int id = s.nextInt();
-					res  = db.minutiPerClientePerMese(id);
-					v.showResult(res);
+					listTicket = db.minutiPerClientePerMese(id);
+					while(!listTicket.isEmpty()) {
+						v.showTicket(listTicket.remove());	
+					}
 					break;
 				case 9:
 					break;

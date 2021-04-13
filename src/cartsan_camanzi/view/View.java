@@ -1,23 +1,18 @@
 package cartsan_camanzi.view;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
+import cartsan_camanzi.model.Cliente;
+import cartsan_camanzi.model.Ticket;
 
 public class View {
 
-	public void showResult(ResultSet res) throws SQLException {
-		ResultSetMetaData rsmd = res.getMetaData();
-		int columnsNumber = rsmd.getColumnCount();
-		while(res.next()) {
-			for (int i = 1; i <= columnsNumber; i++) {
-				if (i > 1) System.out.print(",  ");
-				String columnValue = res.getString(i);
-				System.out.print(columnValue + " " + rsmd.getColumnName(i));
-			}
-			System.out.println("");
-		}
-
+	public void showCliente(Cliente cl) {
+		System.out.print("Denominazione cliente = " + cl.getDenominazioneCliente() + " Numero Ticket = " + cl.getNumeroTicket() + " Minuti totali = "+ cl.getNumeroMinuti());
+		System.out.println();
+	}
+	
+	public void showTicket(Ticket tc) {
+		System.out.print("Id cliente = " + tc.getClienteTicket() + " Mese = " + tc.getMeseTicket() + " Minuti totali = "+ tc.getMinutiTotali());
+		System.out.println();
 	}
 
 	public void errore() {
@@ -37,4 +32,5 @@ public class View {
 	public void inserisciId() {
 		System.out.print("Inserire id:");
 	}
+
 }
