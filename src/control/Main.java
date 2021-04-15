@@ -1,12 +1,12 @@
-package cartsan_camanzi.control;
+package control;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import cartsan_camanzi.model.Cliente;
-import cartsan_camanzi.model.DBManager;
-import cartsan_camanzi.model.Ticket;
-import cartsan_camanzi.view.View;
+import db.manager.DBManager;
+import model.Cliente;
+import model.Ticket;
+import view.View;
 
 public class Main {
 

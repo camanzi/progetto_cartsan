@@ -1,7 +1,7 @@
-package cartsan_camanzi.view;
+package view;
 
-import cartsan_camanzi.model.Cliente;
-import cartsan_camanzi.model.Ticket;
+import model.Cliente;
+import model.Ticket;
 
 public class View {
 

@@ -1,10 +1,13 @@
-package cartsan_camanzi.model;
+package db.daoimplementation;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
+
+import db.dao.ClienteDAO;
+import model.Cliente;
 
 public class ClienteDAOIm implements ClienteDAO{
 
@@ -15,7 +18,7 @@ public class ClienteDAOIm implements ClienteDAO{
 	 * */
 
 	@Override
-	public LinkedList<Cliente> QuantitaTicketPerCliente(Connection dbConn) {
+	public LinkedList<Cliente> quantitaTicketPerCliente(Connection dbConn) {
 		LinkedList<Cliente> list = new LinkedList<>();
 		try {
 			Statement st = dbConn.createStatement();
@@ -53,7 +56,7 @@ public class ClienteDAOIm implements ClienteDAO{
 	}
 
 	@Override
-	public LinkedList<Cliente> QuantitaMinutiPerCliente(Connection dbConn) {
+	public LinkedList<Cliente> quantitaMinutiPerCliente(Connection dbConn) {
 		try {
 			Statement st = dbConn.createStatement();
 			ResultSet res = st.executeQuery("SELECT cliente.denominazioneCliente, SUM(tempoRispostaTicket) AS minutiTotali FROM ticket LEFT JOIN cliente ON cliente.idCliente = ticket.clienteTicket GROUP BY cliente.idCliente");
@@ -72,7 +75,7 @@ public class ClienteDAOIm implements ClienteDAO{
 	}
 
 	@Override
-	public LinkedList<Cliente> TopDieciMinutiPerCliente(Connection dbConn) {
+	public LinkedList<Cliente> topDieciMinutiPerCliente(Connection dbConn) {
 		try {
 			Statement st = dbConn.createStatement();
 			ResultSet res= st.executeQuery("SELECT cliente.denominazioneCliente, SUM(tempoRispostaTicket) AS minutiTotali FROM ticket LEFT JOIN cliente ON cliente.idCliente = ticket.clienteTicket GROUP BY cliente.idCliente ORDER BY minutiTotali DESC LIMIT 10");

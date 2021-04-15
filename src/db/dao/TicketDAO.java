@@ -1,6 +1,8 @@
-package cartsan_camanzi.model;
+package db.dao;
 import java.sql.Connection;
 import java.util.List;
+
+import model.Ticket;
 
 public interface TicketDAO {
 	

@@ -1,10 +1,13 @@
-package cartsan_camanzi.model;
+package db.manager;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
+import db.daoimplementation.ClienteDAOIm;
+import db.daoimplementation.TicketDAOIm;
+import model.Cliente;
+import model.Ticket;
 
 public class DBManager {
 
@@ -28,7 +31,7 @@ public class DBManager {
 
 	public LinkedList<Cliente> ticketPerCliente() {
 		ClienteDAOIm cliente = new ClienteDAOIm();
-		return cliente.QuantitaTicketPerCliente(dbConn);
+		return cliente.quantitaTicketPerCliente(dbConn);
 	}
 
 	public LinkedList<Cliente> topDieciClientiPerTicket() {
@@ -38,12 +41,12 @@ public class DBManager {
 
 	public LinkedList<Cliente> minutiPerCliente() {
 		ClienteDAOIm cliente = new ClienteDAOIm();
-		return cliente.QuantitaMinutiPerCliente(dbConn);
+		return cliente.quantitaMinutiPerCliente(dbConn);
 	}
 
 	public LinkedList<Cliente> topDieciClientiPerMinuti() {
 		ClienteDAOIm cliente = new ClienteDAOIm();
-		return cliente.TopDieciMinutiPerCliente(dbConn);
+		return cliente.topDieciMinutiPerCliente(dbConn);
 	}
 
 	public LinkedList<Ticket> minutiPerClientePerMese(int id) {

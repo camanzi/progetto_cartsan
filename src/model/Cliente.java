@@ -1,4 +1,4 @@
-package cartsan_camanzi.model;
+package model;
 
 public class Cliente {
 

@@ -1,11 +1,13 @@
-package cartsan_camanzi.model;
+package db.daoimplementation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
-import java.util.List;
+
+import db.dao.TicketDAO;
+import model.Ticket;
 
 public class TicketDAOIm implements TicketDAO{
 
